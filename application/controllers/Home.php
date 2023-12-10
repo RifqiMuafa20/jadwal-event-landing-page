@@ -41,4 +41,37 @@ class Home extends CI_Controller {
 		$this->M_event->deleteDataEvent($id);
 		redirect(base_url(''));
 	}
+
+	public function getDataById($id)
+	{
+		$query = $this->M_event->getEventById($id);
+		$queryAllEvent = $this->M_event->getDataEvent();
+		$DATA = array(
+			'queryById' => $query,
+			'queryAllEvent' => $queryAllEvent
+		);
+
+		$this->load->view('home', $DATA);
+		$this->load->helper('form');
+	}
+
+	public function fungsiEdit()
+	{	
+		$id = $this->input->post('id');
+		$name = $this->input->post('name');
+		$description = $this->input->post('description');
+		$location = $this->input->post('location');
+		$date = $this->input->post('date');
+
+		$ArrUpdate = array(
+			'id' => $id,
+			'name' => $name,
+			'description' => $description,
+			'location' => $location,
+			'date' => $date
+		);
+
+		$this->M_event->updateDataEvent($id, $ArrUpdate);
+		redirect(base_url('')); 
+	}
 }

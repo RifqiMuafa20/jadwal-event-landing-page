@@ -54,7 +54,7 @@
 						</div>
 						<div class="action_btn">
 							<div>
-								<a href=""><img src="<?= base_url('assets/img/edit.png') ?>" alt="edit"></a>
+								<a href="<?php echo site_url('Home/getDataById/'.$row->id) ?>/<?php echo $row->id ?>"><img src="<?= base_url('assets/img/edit.png') ?>" alt="edit"></a>
 								<a href="<?php echo site_url('Home/fungsiDelete/'.$row->id) ?>/<?php echo $row->id ?>"><img src="<?= base_url('assets/img/delete.png') ?>" alt="delete"></a>
 							</div>
 						</div>
@@ -71,13 +71,24 @@
 			</div>
 			<div class="add_event">
 				<div>
-					<?= form_open('Home/fungsiTambah', ['class' => 'add_event_form']) ?>
-						<input type="text" name="name" id="name" placeholder="Nama Event">
-						<textarea name="description" id="description" cols="50" rows="10" maxlength="1000" placeholder="Deskripsi Event"></textarea>
-						<input type="text" name="location" id="location" placeholder="Lokasi Event">
-						<input type="date" name="date" id="date" placeholder="Date Event">
-						<button type="submit" id="submit">Submit</button>
-					<?= form_close(); ?>
+					<?php if (isset($queryById)) : ?>
+						<?= form_open('Home/fungsiEdit', ['class' => 'add_event_form']) ?>
+							<input type="hidden" name="id" value="<?php echo $queryById->id; ?>">
+							<input type="text" name="name" id="name" placeholder="Nama Event" value="<?php echo $queryById->name; ?>">
+							<textarea name="description" id="description" cols="50" rows="10" maxlength="1000" placeholder="Deskripsi Event"><?php echo $queryById->description; ?></textarea>
+							<input type="text" name="location" id="location" placeholder="Lokasi Event" value="<?php echo $queryById->location; ?>">
+							<input type="date" name="date" id="date" placeholder="Date Event" value="<?php echo $queryById->date; ?>">
+							<button type="submit" id="submit">Submit</button>
+						<?= form_close(); ?>
+					<?php else : ?>
+						<?= form_open('Home/fungsiTambah', ['class' => 'add_event_form']) ?>
+							<input type="text" name="name" id="name" placeholder="Nama Event">
+							<textarea name="description" id="description" cols="50" rows="10" maxlength="1000" placeholder="Deskripsi Event"></textarea>
+							<input type="text" name="location" id="location" placeholder="Lokasi Event">
+							<input type="date" name="date" id="date" placeholder="Date Event">
+							<button type="submit" id="submit">Submit</button>
+						<?= form_close(); ?>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>

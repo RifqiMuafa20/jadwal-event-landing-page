@@ -15,4 +15,15 @@ class M_event extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete('events');
     }
+
+    function getEventById($id){
+        $this->db->where('id', $id);
+        $query = $this->db->get('events');
+        return $query->row();
+    }
+
+    function updateDataEvent($id, $data){
+        $this->db->where('id', $id);
+        $this->db->update('events', $data);
+    }
 }
