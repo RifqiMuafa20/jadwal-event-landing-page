@@ -15,5 +15,30 @@ class Home extends CI_Controller {
 			'queryAllEvent' => $queryAllEvent
 		);
 		$this->load->view('home', $DATA);
+		$this->load->helper('form');
+	}
+
+	public function fungsiTambah() 
+	{
+		$name = $this->input->post('name');
+		$description = $this->input->post('description');
+		$location = $this->input->post('location');
+		$date = $this->input->post('date');
+
+		$data = array(
+			'name' => $name,
+			'description' => $description,
+			'location' => $location,
+			'date' => $date
+		);
+
+		$this->M_event->insertDataEvent($data);
+		redirect(base_url('')); 
+	}
+
+	public function fungsiDelete($id)
+	{
+		$this->M_event->deleteDataEvent($id);
+		redirect(base_url(''));
 	}
 }

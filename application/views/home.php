@@ -55,7 +55,7 @@
 						<div class="action_btn">
 							<div>
 								<a href=""><img src="<?= base_url('assets/img/edit.png') ?>" alt="edit"></a>
-								<a href=""><img src="<?= base_url('assets/img/delete.png') ?>" alt="delete"></a>
+								<a href="<?php echo site_url('Home/fungsiDelete/'.$row->id) ?>/<?php echo $row->id ?>"><img src="<?= base_url('assets/img/delete.png') ?>" alt="delete"></a>
 							</div>
 						</div>
 					</div>
@@ -65,8 +65,21 @@
 				}
 				?>
 		</div>
-		<div class="add_event">
-			
+		<div class="add_event_container">
+			<div class="title2">
+				<p>Tambah Event Lari</p>
+			</div>
+			<div class="add_event">
+				<div>
+					<?= form_open('Home/fungsiTambah', ['class' => 'add_event_form']) ?>
+						<input type="text" name="name" id="name" placeholder="Nama Event">
+						<textarea name="description" id="description" cols="50" rows="10" maxlength="1000" placeholder="Deskripsi Event"></textarea>
+						<input type="text" name="location" id="location" placeholder="Lokasi Event">
+						<input type="date" name="date" id="date" placeholder="Date Event">
+						<button type="submit" id="submit">Submit</button>
+					<?= form_close(); ?>
+				</div>
+			</div>
 		</div>
 	</main>
 	<footer>

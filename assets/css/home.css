@@ -137,3 +137,62 @@ li a:hover:not(.active) {
     height: 18px;
     margin-right: 10px;
 }
+
+.add_event_form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 50px auto;
+    padding: 50px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: #F7F8FF;
+}
+
+.add_event_form input, #description {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: #808080 solid 2px;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #000000;
+    padding-left: 10px;
+}
+
+.add_event_container input {
+    height: 50px;
+}
+
+.add_event_container {
+    background-color: #182c5c;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+#description {
+    padding-top: 15px;
+}
+
+.title2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #F7F8FF;
+    text-align: center;
+}
+
+#submit {
+    background-color: #182C5C;
+    height: 40px;
+    width: 150px;
+    border: 0px;
+    color: #D3D3D3;
+    font-size: 15px;
+    justify-content: center;
+    margin: auto;
+}
+
+#submit:hover {
+    background-color: #D3D3D3;
+    color: #3B4856;
+    border: 1px solid #182C5C;
+    cursor: grab;
+}
